@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+        <title>Document</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="navbar">
+            <a href="#home" target="_blank" rel="noopener noreferrer" aria-label="X">ログイン/新規登録</a>
+            <div class="dropdown">
+                <button class="dropbtn">SNS ▼</button>
+                <div class="dropdown-content">
+                  <a href="" target="_blank" rel="noopener noreferrer" aria-label="X">x</a>
+                  <a href="" target="_blank" rel="noopener noreferrer" aria-label="Instgram">Instagram</a>
+                </div>
+            </div>
+            <a href="#contact">お問い合わせ</a>
+        </div>
+      
+
+        <div class="slider-container">
+            <div class="slider-wrapper" id="slider" style="text-align: center">
+                <div class="slide">
+                    <img src="../img/product.png" alt="画像1">
+                    <div class='caption'>説明テキスト</div>
+                </div>
+                <div class="slide">
+                    <img src="../img/product2.png" alt="画像2">
+                    <div class='caption'>説明テキスト</div>
+                </div>
+                <div class="slide">
+                    <img src="../img/product3.png" alt="画像3">
+                    <div class='caption'>説明テキスト</div>
+                </div>
+            </div>
+            <button class="nav-button prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="nav-button next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+        <br>
+        <br>
+        <div class="label">
+            <span class="en">News</span>
+            <span class="jp">ニュース</span>
+        </div>
+        <div class="news">
+            <div class="topic">
+                <img src="../img/news.png" alt="画像1" width="300px">
+                <p>text</p>
+            </div>
+            <div class="topic">
+                <img src="../img/news.png" alt="画像1" width="300px">
+                <p>text</p>
+            </div>
+            <div class="topic">
+                <img src="../img/news.png" alt="画像1" width="300px">
+                <p>text</p>
+            </div>
+            <div class="topic">
+                <img src="../img/news.png" alt="画像1" width="300px">
+                <p>text</p>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="label">
+            <span class="en">Populer genre </span>
+            <span class="jp">人気ジャンル</span>
+        </div>
+        <div class="genre">
+            <div class="genre-topic">
+                <img src="../img/genre.png" alt="画像1" >
+                <div class ="overlay">text</div>
+            </div>
+            <div class="genre-topic">
+                <img src="../img/genre.png" alt="画像1" >
+                <div class ="overlay">text</div>
+            </div>
+            <div class="genre-topic">
+                <img src="../img/genre.png" alt="画像1" >
+                <div class ="overlay">text</div>
+            </div>
+            <div class="genre-topic">
+                <img src="../img/genre.png" alt="画像1" >
+                <div class ="overlay">text</div>
+            </div>
+        </div>
+        <div class="btn-container">
+            <a href="" class="btn2 user">もっと詳しく見る</a>
+            <a href="" class="btn2 sns">無料登録して使う</a>
+        </div>
+        <div class="footer">かずま</div>
+        <script>
+            const slider = document.getElementById('slider');
+            const slides = slider.children;
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            let autoPlayInterval;
+        
+            function moveSlide(direction) {
+              currentIndex += direction;
+        
+              if (currentIndex < 0) {
+                currentIndex = totalSlides - 1;
+              } else if (currentIndex >= totalSlides) {
+                currentIndex = 0;
+              }
+        
+              updateSlide();
+              resetAutoPlay(); // 手動操作時に自動再生をリセット
+            }
+        
+            function updateSlide() {
+              const offset = -currentIndex * 100;
+              slider.style.transform = `translateX(${offset}%)`;
+            }
+        
+            function autoPlay() {
+              currentIndex = (currentIndex + 1) % totalSlides;
+              updateSlide();
+            }
+        
+            function resetAutoPlay() {
+              clearInterval(autoPlayInterval);
+              autoPlayInterval = setInterval(autoPlay, 4000); // 4秒ごとに自動スライド
+            }
+        
+            // 初期化
+            window.onload = () => {
+              updateSlide();
+              autoPlayInterval = setInterval(autoPlay, 5000);
+            };
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
